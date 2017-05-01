@@ -2,6 +2,13 @@
 PTT自動登入發文(Python) for Windows and Linux
 * [Demo Video](https://youtu.be/FkdR6C-a9Nw) - Linux 
 
+
+update -2017/5/1
+
+此範例使用  Python 3.4.3 
+
+如要使用 python 2.7.3 可參考 [20a029ab14f55e81b](https://github.com/twtrubiks/PttAutoLoginPost/tree/20a029ab14f55e81b790c90698c8cd0d0b03ad3d)
+
 ## 特色
 * 自動登入PTT發文，再登出PTT
    
@@ -33,7 +40,7 @@ post('test', u'發文文字測試', u'這是一篇測試,哇哈哈')
 ## 執行環境
 Ubuntu 12.04
 
-Python 2.7.3
+Python 3.4.3
 
 ## License
 MIT license
