@@ -1,6 +1,9 @@
 import sys
 import telnetlib
 import time
+import datetime
+import random
+import json
 
 
 class Ptt(object):
@@ -105,14 +108,24 @@ class Ptt(object):
 
 def main():
     host = 'ptt.cc'
-    user = 'Your PTT ID'
-    password = 'Your PTT Password'
-    ptt = Ptt(host, user, password)
-    time.sleep(1)
-    if ptt.is_connect():
-        if ptt.login():
-            ptt.post('test', '發文文字測試', '這是一篇測試,哇哈哈')
-    ptt.logout()
+    user = []
+    password = []
+    with open('user.json') as json_file:
+        data = json.load(json_file)
+        for ptt in data:
+            user.append(ptt['user'])
+            password.append(ptt['password'])
+
+    for i in range(len(user)):
+        print('\tUser: ', user[i], ', Time:', datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"))
+        ptt = Ptt(host, user[i], password[i])
+        time.sleep(random.randint(2,5))
+        if ptt.is_connect():
+            if ptt.login():
+                print()
+                time.sleep(random.randint(1, 10) * 60)
+        ptt.logout()
+        time.sleep(random.randint(1, 10) * 60)
 
 
 if __name__ == "__main__":
