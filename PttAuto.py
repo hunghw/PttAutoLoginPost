@@ -4,6 +4,7 @@ import time
 import datetime
 import random
 import json
+import os
 
 
 class Ptt(object):
@@ -110,7 +111,8 @@ def main():
     host = 'ptt.cc'
     user = []
     password = []
-    with open('user.json') as json_file:
+    dir_path = os.path.dirname(os.path.abspath(__file__))
+    with open(os.path.join(dir_path, 'user.json')) as json_file:
         data = json.load(json_file)
         for ptt in data:
             user.append(ptt['user'])
